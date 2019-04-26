@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table style="width=100%">
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+            <th>Email</th>
+        </tr>
+        {% for person in persons %}
+        <tr>
+            <td><a href="{{ url_for('person', id_=person[0]) }}">{{ person[1] }}</a></td>
+            <td>{{ person[2] }}</td>
+            <td>{{ person[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

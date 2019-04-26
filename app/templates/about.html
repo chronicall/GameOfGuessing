@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Instructions:</h3>
+    <ol type="1">
+        <li>Predict which characters will be alive or dead at the end of season 8. One point for each correct guess, one point taken away for a wrong guess!</li>
+        <li>If you predict that a character dies, you can also say whether or not that character becomes a White Walker. You get an extra point here for a correct prediction, but you lose a point for an incorrect prediction.
+            <ul>
+                <li><b>Example 1:</b> You predict that Theon Greyjoy will die and that he does not turn into a White Walker. After the gruesome end of an episode it turns out that he is in fact killed and turned into a White Walker. Now you get 1 point for correctly predicting that he dies, but you also get -1 points for incorrectly predicting his White Walker status. Resulting in 0 points.</li>
+                <li><b>Example 2:</b> You predict that Sansa Stark will die and that she will not turn into a White Walker. Turns out you were correct, she dies and is not turned. For this, you get 1 point for the death prediction and 1 point for the White Walker prediction. Resulting in 2 points.</li>
+                <li><b>Example 3:</b> You predict that Lord Varys lives, the sneaky spider that he is. This means you cannot predict whether or not he turns into a White Walker, because, well.. he's still alive. You correctly predict that he lives. For this you get 1 point for the correct prediction, but no extra point for a White Walker prediction. Resulting in 1 point.</li>
+                <li><b>Example 4:</b> You predict that Greywom lives. This is an incorrect prediction, as he is killed in some episode. This mean you get -1 points for the incorrect prediction, but you do not get an added -1 point for a White Walker prediction. Resulting in -1 points.</li>
+            </ul>
+        </li>
+        <li>If you answer the bonus questions correctly you get bonus points! No penalties.</li>
+        <li>Check the leaderboard to see who's winning and shower them with praise!</li>
+    </ol>
+{% endblock %}

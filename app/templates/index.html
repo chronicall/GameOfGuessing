@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/disable_ww_if_alive.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div>
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=35) }}<br>
+            {% for error in form.name.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=35) }}<br>
+            {% for error in form.email.errors %}
+                <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        </div>
+        <hr>
+        <table style="width=100%">
+            <tr>
+                <th>Person</th>
+                <th>Alive?</th>
+                <th>Dead?</th>
+                <th>Becomes a Whitewalker?</th>
+            </tr>
+            <tr>
+                <td>{{ form.jon_snow.label }}</td><!-- {% if form.jon_snow.flags.required %}*{% endif %}</td>-->
+                {% for subfield in form.jon_snow %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.jon_snow_ww() }}</td>
+                {% for error in form.jon_snow.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.sansa_stark.label }}</td>
+                {% for subfield in form.sansa_stark %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.sansa_stark_ww() }}</td>
+                {% for error in form.sansa_stark.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.arya_stark.label }}</td>
+                {% for subfield in form.arya_stark %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.arya_stark_ww() }}</td>
+                {% for error in form.arya_stark.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.bran_stark.label }}</td>
+                {% for subfield in form.bran_stark %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.bran_stark_ww() }}</td>
+                {% for error in form.bran_stark.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.cersei_lannister.label }}</td>
+                {% for subfield in form.cersei_lannister %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.cersei_lannister_ww() }}</td>
+                {% for error in form.cersei_lannister.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.jamie_lannister.label }}</td>
+                {% for subfield in form.jamie_lannister %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.jamie_lannister_ww() }}</td>
+                {% for error in form.jamie_lannister.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.tyrion_lannister.label }}</td>
+                {% for subfield in form.tyrion_lannister %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.tyrion_lannister_ww() }}</td>
+                {% for error in form.tyrion_lannister.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.daenerys_targaryen.label }}</td>
+                {% for subfield in form.daenerys_targaryen %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.daenerys_targaryen_ww() }}</td>
+                {% for error in form.daenerys_targaryen.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.theon_greyjoy.label }}</td>
+                {% for subfield in form.theon_greyjoy %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.theon_greyjoy_ww() }}</td>
+                {% for error in form.theon_greyjoy.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.yara_greyjoy.label }}</td>
+                {% for subfield in form.yara_greyjoy %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.yara_greyjoy_ww() }}</td>
+                {% for error in form.yara_greyjoy.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.melisandre.label }}</td>
+                {% for subfield in form.melisandre %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.melisandre_ww() }}</td>
+                {% for error in form.melisandre.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.jorah_mormont.label }}</td>
+                {% for subfield in form.jorah_mormont %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.jorah_mormont_ww() }}</td>
+                {% for error in form.jorah_mormont.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.the_hound.label }}</td>
+                {% for subfield in form.the_hound %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.the_hound_ww() }}</td>
+                {% for error in form.the_hound.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.the_mountain.label }}</td>
+                {% for subfield in form.the_mountain %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.the_mountain_ww() }}</td>
+                {% for error in form.the_mountain.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.samwell_tarly.label }}</td>
+                {% for subfield in form.samwell_tarly %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.samwell_tarly_ww() }}</td>
+                {% for error in form.samwell_tarly.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.gilly.label }}</td>
+                {% for subfield in form.gilly %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.gilly_ww() }}</td>
+                {% for error in form.gilly.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.sam_jr.label }}</td>
+                {% for subfield in form.sam_jr %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.sam_jr_ww() }}</td>
+                {% for error in form.sam_jr.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.lord_varys.label }}</td>
+                {% for subfield in form.lord_varys %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.lord_varys_ww() }}</td>
+                {% for error in form.lord_varys.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.brienne_of_tarth.label }}</td>
+                {% for subfield in form.brienne_of_tarth %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.brienne_of_tarth_ww() }}</td>
+                {% for error in form.brienne_of_tarth.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.davos_seaworth.label }}</td>
+                {% for subfield in form.davos_seaworth %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.davos_seaworth_ww() }}</td>
+                {% for error in form.davos_seaworth.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.bronn.label }}</td>
+                {% for subfield in form.bronn %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.bronn_ww() }}</td>
+                {% for error in form.bronn.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.podrick_payne.label }}</td>
+                {% for subfield in form.podrick_payne %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.podrick_payne_ww() }}</td>
+                {% for error in form.podrick_payne.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.tormund_giantsbane.label }}</td>
+                {% for subfield in form.tormund_giantsbane %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.tormund_giantsbane_ww() }}</td>
+                {% for error in form.tormund_giantsbane.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.greyworm.label }}</td>
+                {% for subfield in form.greyworm %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.greyworm_ww() }}</td>
+                {% for error in form.greyworm.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.gendry.label }}</td>
+                {% for subfield in form.gendry %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.gendry_ww() }}</td>
+                {% for error in form.gendry.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.beric_dondarrion.label }}</td>
+                {% for subfield in form.beric_dondarrion %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.beric_dondarrion_ww() }}</td>
+                {% for error in form.beric_dondarrion.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>{{ form.euron_greyjoy.label }}</td>
+                {% for subfield in form.euron_greyjoy %}
+                    <td>{{ subfield }}</td>
+                {% endfor %}
+                <td>{{ form.euron_greyjoy_ww() }}</td>
+                {% for error in form.euron_greyjoy.errors %}
+                    <td><span style="color: red;">{{ error }}</span></td>
+                {% endfor %}
+            </tr>
+        </table>
+
+        <div>
+            <h3>Bonus questions</h3>
+            <table>
+                <tr>
+                    <td>{{ form.daenerys_pregnant.label }}</td>
+                    <td>{{ form.daenerys_pregnant }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.brienne_x_tormund.label }}</td>
+                    <td>{{ form.brienne_x_tormund }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.night_king_death.label }}</td>
+                    <td>{{ form.night_king_death(size=35) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.night_king_death_by.label }}</td>
+                    <td>{{ form.night_king_death_by(size=35) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.iron_throne.label }}</td>
+                    <td>{{ form.iron_throne(size=35) }}</td>
+                </tr>
+            </table>
+        </div>
+
+        {{ form.submit() }}
+    </form>
+{% endblock %}

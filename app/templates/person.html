@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div><h3>{{ person[0] }} || Score: {{ person[1] }}</h3></div>
+    <div><h5>{{ person[2] }}</h5></div>
+
+    <table>
+        <tr>
+            <th>Person</th>
+            <th>Alive?</th>
+            <th>Dead?</th>
+            <th>Becomes a Whitewalker?</th>
+        </tr>
+        {% for guess in base_guesses %}
+        <tr>
+            <td>{{ guess[0] }}</td>
+            {% if guess[1] %}
+                <td>
+                    <input type="radio" name="alive-{{ guess[0] }}" checked disabled>
+                </td>
+                <td>
+                    <input type="radio" name="alive-{{ guess[0] }}" disabled>
+                </td>
+            {% else %}
+                <td>
+                    <input type="radio" name="alive-{{ guess[0] }}" disabled>
+                </td>
+                <td>
+                    <input type="radio" name="alive-{{ guess[0] }}" checked disabled>
+                </td>
+            {% endif %}
+
+            {% if guess[2] %}
+                <td>
+                    <input type="checkbox" name="ww-{{ guess[0] }}" checked disabled>
+                </td>
+            {% else %}
+                <td>
+                    <input type="checkbox" name="ww-{{ guess[0] }}" disabled>
+                </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div>
+        <h3>Bonus questions</h3>
+        <table>
+            {% for guess in bonus_guesses %}
+                <tr>
+                    <td>{{ guess[0] }}</td>
+                    <td><input type="input" name="{{ guess[0] }}" disabled value="{{ guess[1] }}"></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
