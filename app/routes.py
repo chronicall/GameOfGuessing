@@ -28,7 +28,6 @@ def leaderboard():
         persons = cursor.fetchall()
         ## Sort by score
         persons = sorted(persons, key=lambda x: x[2], reverse=True)
-        
         return render_template('leaderboard.html', persons=persons)
     except Exception as e:
         return (str(e))

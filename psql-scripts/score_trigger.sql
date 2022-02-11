@@ -12,6 +12,10 @@ as $$
     begin
         for t_row in t_curs loop
             score_modifier := 0;
+            -- Skipping Theon and what weapon kills the Night King
+            if old.id = 9 or old.id = 31 then
+                continue;
+            end if;
             -- Only do this if this is a new answer.
             if old.answer is NULL then
                 -- Base questions; who lives and who dies and do they turn into a white walker?
@@ -22,6 +26,10 @@ as $$
                     inner join question on guess.question_id = question.id
                     inner join person on guess.person_id = t_row.id
                     where question.id = old.id;
+
+                    if base_answer = true and ww = true then
+                        continue;
+                    end if;
                     
                     -- Possible answers:
                     --  dead && not whitewalker  = 0
@@ -44,7 +52,6 @@ as $$
                     end if;
                 -- Bonus questions
                 else
-                    -- XXX: Do wrong answers to bonus questions result in deductions?
                     select b.guess into bonus_answer
                     from bonus_guess b
                     inner join guess on b.guess_id = guess.id
@@ -81,6 +88,8 @@ as $$
                 update person
                     set score = score + score_modifier
                     where current of t_curs;
+            else
+                -- Handle updated answers.
             end if;
         end loop;
         return new;
